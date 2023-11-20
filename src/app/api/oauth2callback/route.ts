@@ -1,0 +1,17 @@
+import { NextRequest, NextResponse } from "next/server";
+
+export async function GET(req: NextRequest) {
+  const CODE = req.nextUrl.searchParams.get("code");
+  console.log("CODE:", CODE);
+  // refresh토큰 받기: https://developers.google.com/identity/protocols/oauth2/web-server?hl=ko#exchange-authorization-code
+  const tokenResponse = await fetch("https://oauth2.googleapis.com/token", {
+    method: "post",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    body: `code=${CODE}&client_id=984820113102-dsnit5cepaodq5s5h45l407n9famgj8n.apps.googleusercontent.com&client_secret=${process.env.SECRET}&redirect_uri=http://localhost:3000/api/oauth2callback&grant_type=authorization_code`,
+  });
+  console.log(await tokenResponse.json());
+
+  return new Response("로그인 성공");
+}

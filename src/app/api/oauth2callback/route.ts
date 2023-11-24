@@ -19,7 +19,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
     name: "access_token",
     value: access_token,
     httpOnly: true,
-    expires: 3600,
+    // expires: 3600, TODO: 만료일 현재시간 + 1시간
   });
   return response;
 }

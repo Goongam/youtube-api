@@ -10,7 +10,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
     },
-    body: `code=${CODE}&client_id=984820113102-dsnit5cepaodq5s5h45l407n9famgj8n.apps.googleusercontent.com&client_secret=${process.env.SECRET}&redirect_uri=http://localhost:3000/api/oauth2callback&grant_type=authorization_code`,
+    body: `code=${CODE}&client_id=${process.env.ID}&client_secret=${process.env.SECRET}&redirect_uri=http://localhost:3000/api/oauth2callback&grant_type=authorization_code`,
   });
   const responseToken = await tokenResponse.json();
   const access_token = responseToken.access_token;

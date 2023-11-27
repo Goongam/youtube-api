@@ -9,7 +9,7 @@ interface CaptionData {
 export async function GET(req: NextRequest) {
   return withSession(req, async (access_token) => {
     const captionId = "AUieDaY5hGuDR-tmOJEB3VonAY9p_jz11HUHfRE8CiKS";
-    const url = `https://youtube.googleapis.com/youtube/v3/captions/${captionId}?key=${process.env.API_KEY}`;
+    const url = `https://youtube.googleapis.com/youtube/v3/captions/${captionId}`;
     const res: CaptionData = await axios.get(url, {
       headers: {
         Authorization: `Bearer ${access_token}`,

@@ -1,5 +1,5 @@
 import { CaptionData } from "@/app/api/youtube/list/[videoId]/route";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 interface ResponseCaptions {
@@ -8,6 +8,7 @@ interface ResponseCaptions {
 
 export default function SelectCaption() {
   const searchParams = useSearchParams();
+  const router = useRouter();
   const videoId = searchParams.get("video");
   const [captionList, setCaptionList] = useState<ResponseCaptions>();
 
@@ -19,13 +20,19 @@ export default function SelectCaption() {
       });
   }, [videoId]);
 
-  console.log(captionList?.caption[0].id);
-  // console.log(captionList[0]);
+  const clickCaption = (captionId: string) => {
+    router.push(`?caption=${captionId}`);
+  };
 
   return (
     <>
       {captionList?.caption.map((caption) => {
-        return <div key={caption.id}>{caption.id}</div>;
+        return (
+          <div key={caption.id}>
+            {caption.id}
+            <button onClick={() => clickCaption(caption.id)}>선택</button>
+          </div>
+        );
       })}
     </>
   );

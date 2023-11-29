@@ -11,7 +11,11 @@ export default function InputVideoURL() {
 
   const requestCaption = () => {
     const id = getVideoId(videoURL);
-    if (!id) return; //TODO: 에러처리
+    if (!id) {
+      console.log("에러");
+
+      return; //TODO: 에러처리
+    }
     router.push(`?video=${id}`);
   };
 

@@ -24,12 +24,13 @@ export default function SelectCaption() {
     router.push(`?caption=${captionId}`);
   };
 
+  if (!captionList?.caption) return <>로그인 후 이용해주세요</>;
   return (
     <>
       {captionList?.caption.map((caption) => {
         return (
           <div key={caption.id}>
-            {caption.id}
+            {caption.snippet.language}
             <button onClick={() => clickCaption(caption.id)}>선택</button>
           </div>
         );

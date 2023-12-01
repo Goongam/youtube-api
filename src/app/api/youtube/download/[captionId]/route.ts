@@ -6,9 +6,15 @@ interface CaptionData {
   data: string;
 }
 
-export async function GET(req: NextRequest) {
+interface Params {
+  params: {
+    captionId: string;
+  };
+}
+
+export async function GET(req: NextRequest, { params }: Params) {
   return withSession(req, async (access_token) => {
-    const captionId = "AUieDaY5hGuDR-tmOJEB3VonAY9p_jz11HUHfRE8CiKS";
+    const captionId = params.captionId;
     const url = `https://youtube.googleapis.com/youtube/v3/captions/${captionId}`;
     const res: CaptionData = await axios.get(url, {
       headers: {

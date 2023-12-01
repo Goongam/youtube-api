@@ -3,13 +3,12 @@
 import { useSearchParams } from "next/navigation";
 
 export default function CaptionRequest() {
+  const searchParams = useSearchParams();
+  const captionId = searchParams.get("caption");
   const request = () => {
-    fetch(
-      "/api/youtube/download/AUieDaY5hGuDR-tmOJEB3VonAY9p_jz11HUHfRE8CiKS",
-      {
-        // credentials: "include",
-      }
-    )
+    fetch(`/api/youtube/download/${captionId}`, {
+      // credentials: "include",
+    })
       .then((res) => res.json())
       .then((json) => console.log(json));
   };

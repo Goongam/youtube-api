@@ -5,6 +5,7 @@ import InputVideoURL from "@/components/InputVideoURL";
 import LoginBtn from "@/components/LoginBtn";
 import SelectCaption from "@/components/SelectCaption";
 import { useSearchParams } from "next/navigation";
+import Progress from "./Progress";
 
 const VIEW_MAPPING = {
   caption: <CaptionRequest />,
@@ -22,5 +23,10 @@ export default function ViewContainer() {
 
   const currentView = caption ? "caption" : video ? "list" : "none";
 
-  return <section>{VIEW_MAPPING[currentView]}</section>;
+  return (
+    <section>
+      <Progress />
+      {VIEW_MAPPING[currentView]}
+    </section>
+  );
 }

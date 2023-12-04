@@ -15,7 +15,7 @@ interface Params {
 export async function GET(req: NextRequest, { params }: Params) {
   return withSession(req, async (access_token) => {
     const captionId = params.captionId;
-    const url = `https://youtube.googleapis.com/youtube/v3/captions/${captionId}`;
+    const url = `https://youtube.googleapis.com/youtube/v3/captions/${captionId}?tlang=en`;
     const res: CaptionData = await axios.get(url, {
       headers: {
         Authorization: `Bearer ${access_token}`,

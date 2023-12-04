@@ -10,6 +10,8 @@ export default function CaptionRequest() {
   const [caption, setCaption] = useState("");
   const [error, setError] = useState(false);
 
+  console.log(caption);
+
   const request = () => {
     fetch(`/api/youtube/download/${captionId}`, {
       // credentials: "include",
@@ -18,8 +20,8 @@ export default function CaptionRequest() {
         if (res.ok) return res.json();
         else setError(true);
       })
-      .then((caption) => {
-        setCaption(caption);
+      .then((data) => {
+        setCaption(data.caption);
       })
       .catch(() => {
         setError(true);

@@ -25,8 +25,15 @@ export default function ViewContainer() {
 
   return (
     <section>
-      <Progress degree={4} />
+      <Progress degree={getDegree(currentView)} />
       {VIEW_MAPPING[currentView]}
     </section>
   );
+}
+
+function getDegree(progress: string): number {
+  if (progress === "none") return 1;
+  else if (progress === "list") return 2;
+  else if (progress === "caption") return 3;
+  else return 1;
 }

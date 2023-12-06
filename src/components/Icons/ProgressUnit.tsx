@@ -10,7 +10,7 @@ interface Props {
 
 export default function ProgressUnit({ status, last }: Props) {
   return (
-    <div className={`${last ?? "w-1/3 z-20"}`}>
+    <div className={`${last ?? "w-1/3"} z-20`}>
       <div
         className={`${getBackgroundColor(
           status

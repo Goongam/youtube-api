@@ -25,3 +25,7 @@ body {
     )
     rgb(var(--background-start-rgb));
 } */
+
+.bar {
+  transition: width 1s ease; /* width에 대한 transition 효과 설정 */
+}

@@ -25,7 +25,7 @@ export default function ViewContainer() {
 
   return (
     <section>
-      <Progress />
+      <Progress degree={4} />
       {VIEW_MAPPING[currentView]}
     </section>
   );

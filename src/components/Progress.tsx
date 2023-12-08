@@ -5,20 +5,21 @@ interface Props {
 }
 
 export default function Progress({ degree }: Props) {
+  console.log(degree);
+
   return (
     <>
       <div className="w-11/12 mx-auto my-4 relative">
         <div className="bg-gray-200 h-1 flex items-center">
-          {/* TODO: 애니메이션 주기 */}
           <div
             className={`bg-indigo-700 z-10 ${getWidth(
               degree
             )} h-1 absolute bar`}
           />
-          <ProgressUnit status="done" />
-          <ProgressUnit status="done" />
-          <ProgressUnit status="now" />
-          <ProgressUnit status="none" last />
+          <ProgressUnit status={getStatus(1, degree)} />
+          <ProgressUnit status={getStatus(2, degree)} />
+          <ProgressUnit status={getStatus(3, degree)} />
+          <ProgressUnit status={getStatus(4, degree)} last />
         </div>
       </div>
     </>
@@ -39,4 +40,10 @@ function getWidth(degree: number) {
     default:
       return;
   }
+}
+
+function getStatus(unit: number, degree: number) {
+  if (degree < unit) return "none";
+  else if (degree === unit) return "now";
+  else return "done";
 }

@@ -23,7 +23,7 @@ export default function SelectCaption() {
   const clickCaption = (captionId: string) => {
     router.push(`?caption=${captionId}`);
   };
-
+  // TODO: 로딩창
   if (!captionList?.caption) return <>로그인 후 이용해주세요</>;
   return (
     <>

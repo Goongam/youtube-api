@@ -7,6 +7,7 @@ import SelectCaption from "@/components/SelectCaption";
 import { useSearchParams } from "next/navigation";
 import Progress from "./Progress";
 
+// TODO: 번역할 언어 선택 후 업로드 버튼 컴포넌트 추가
 const VIEW_MAPPING = {
   caption: <CaptionRequest />,
   list: <SelectCaption />,

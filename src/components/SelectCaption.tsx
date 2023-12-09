@@ -11,12 +11,14 @@ export default function SelectCaption() {
   const router = useRouter();
   const videoId = searchParams.get("video");
   const [captionList, setCaptionList] = useState<ResponseCaptions>();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch(`/api/youtube/list/${videoId}`)
       .then((res) => res.json())
       .then((resCaptionList) => {
         setCaptionList(resCaptionList);
+        setLoading(false);
       });
   }, [videoId]);
 
@@ -24,6 +26,7 @@ export default function SelectCaption() {
     router.push(`?caption=${captionId}`);
   };
   // TODO: 로딩창
+  if (loading) return <>loading...</>;
   if (!captionList?.caption) return <>로그인 후 이용해주세요</>;
   return (
     <>

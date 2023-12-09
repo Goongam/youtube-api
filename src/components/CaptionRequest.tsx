@@ -9,10 +9,12 @@ export default function CaptionRequest() {
 
   const [caption, setCaption] = useState("");
   const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   console.log(caption);
 
   const request = () => {
+    setLoading(true);
     fetch(`/api/youtube/download/${captionId}`, {
       // credentials: "include",
     })
@@ -25,10 +27,20 @@ export default function CaptionRequest() {
       })
       .catch(() => {
         setError(true);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   };
 
-  if (error) return <div>에러...</div>;
+  if (loading) return <>loading...</>;
+  if (error)
+    return (
+      <>
+        <div>에러...</div>
+        <button onClick={request}>다시요청</button>
+      </>
+    );
 
   return (
     <>

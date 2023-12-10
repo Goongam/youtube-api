@@ -6,14 +6,16 @@ import { useState } from "react";
 
 export default function InputVideoURL() {
   const [videoURL, setVideoURL] = useState("");
+  const [error, setError] = useState(false);
 
   const router = useRouter();
 
   const requestCaption = () => {
+    setError(false);
     const id = getVideoId(videoURL);
     if (!id) {
       console.log("에러");
-
+      setError(true);
       return; //TODO: 에러처리
     }
     router.push(`?video=${id}`);
@@ -21,6 +23,7 @@ export default function InputVideoURL() {
 
   return (
     <>
+      {error && <div>잘못된 url 입력...</div>}
       <input
         type="text"
         placeholder="유튜브 영상 URL입력..."

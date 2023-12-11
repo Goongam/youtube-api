@@ -1,7 +1,9 @@
 "use client";
 
+import { TLANGS } from "@/constants/tlang";
 import { useSearchParams } from "next/navigation";
 import { useState } from "react";
+import TranslateRequest from "./TranslateRequest";
 
 export default function CaptionRequest() {
   const searchParams = useSearchParams();
@@ -46,6 +48,7 @@ export default function CaptionRequest() {
     <>
       <button onClick={request}>자막요청</button>
       <div>{caption}</div>
+      <TranslateRequest />
     </>
   );
 }

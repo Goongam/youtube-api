@@ -29,25 +29,24 @@ export default function TranslateRequest() {
       });
   };
 
-  if (loading) <>loading...</>;
-  if (error) <>error...</>;
-  if (!caption)
-    return (
-      <div>
-        {TLANGS.map((tlang) => (
-          <div key={tlang}>
-            <button onClick={() => requestTranslate(tlang)}>
-              {tlang}으로 자막 번역
-            </button>
-          </div>
-        ))}
-      </div>
-    );
-  else
-    return (
-      <div>
-        <h2>-번역된 자막-</h2>
-        <div>{caption}</div>
-      </div>
-    );
+  if (loading) return <>loading...</>;
+  if (error) return <>error...</>;
+
+  return (
+    <div>
+      {TLANGS.map((tlang) => (
+        <div key={tlang}>
+          <button onClick={() => requestTranslate(tlang)}>
+            {tlang}으로 자막 번역
+          </button>
+        </div>
+      ))}
+      {caption && (
+        <div>
+          <h2>-번역된 자막-</h2>
+          <div>{caption}</div>
+        </div>
+      )}
+    </div>
+  );
 }

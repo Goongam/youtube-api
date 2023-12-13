@@ -1,15 +1,16 @@
 "use client";
-
+//https://www.youtube.com/watch?v=j40_yYh9OvI
 import { TLANGS } from "@/constants/tlang";
 import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 import TranslateRequest from "./TranslateRequest";
+import { Caption, generateCaption } from "@/util/captions";
 
 export default function CaptionRequest() {
   const searchParams = useSearchParams();
   const captionId = searchParams.get("caption");
 
-  const [caption, setCaption] = useState("");
+  const [caption, setCaption] = useState<Caption[]>([]);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -25,7 +26,7 @@ export default function CaptionRequest() {
         else setError(true);
       })
       .then((data) => {
-        setCaption(data.caption);
+        setCaption(generateCaption(data.caption));
       })
       .catch(() => {
         setError(true);
@@ -47,7 +48,13 @@ export default function CaptionRequest() {
   return (
     <>
       <button onClick={request}>자막요청</button>
-      <div>{caption}</div>
+      <div>
+        {caption.map(({ endTime, startTime, text }, i) => (
+          <div key={i}>
+            {startTime} - {endTime} / {text}
+          </div>
+        ))}
+      </div>
       <TranslateRequest />
     </>
   );

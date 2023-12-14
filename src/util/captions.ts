@@ -8,7 +8,6 @@ export function generateCaption(rawCaption: string): Caption[] {
 
   const caption = captionLines.map(splitTimeAndText);
 
-  console.log(caption);
   return caption;
 }
 

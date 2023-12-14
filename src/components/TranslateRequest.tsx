@@ -4,10 +4,11 @@ import { useState } from "react";
 
 export default function TranslateRequest() {
   const searchParams = useSearchParams();
-  const captionId = searchParams.get("caption");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [caption, setCaption] = useState("");
+
+  const captionId = searchParams.get("caption");
 
   const requestTranslate = (caption: string) => {
     setLoading(true);
@@ -33,20 +34,24 @@ export default function TranslateRequest() {
   if (error) return <>error...</>;
 
   return (
-    <div>
-      {TLANGS.map((tlang) => (
-        <div key={tlang}>
-          <button onClick={() => requestTranslate(tlang)}>
-            {tlang}으로 자막 번역
-          </button>
-        </div>
-      ))}
-      {caption && (
-        <div>
-          <h2>-번역된 자막-</h2>
-          <div>{caption}</div>
-        </div>
-      )}
-    </div>
+    <>
+      <div className="w-32 border border-black">
+        {TLANGS.map((tlang) => (
+          <div key={tlang}>
+            <button onClick={() => requestTranslate(tlang)}>
+              {tlang}으로 자막 번역
+            </button>
+          </div>
+        ))}
+      </div>
+      <div className="flex-1 border border-black">
+        {caption && (
+          <div>
+            <h2>-번역된 자막-</h2>
+            <div>{caption}</div>
+          </div>
+        )}
+      </div>
+    </>
   );
 }

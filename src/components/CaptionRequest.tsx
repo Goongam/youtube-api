@@ -48,14 +48,16 @@ export default function CaptionRequest() {
   return (
     <>
       <button onClick={request}>자막요청</button>
-      <div>
-        {caption.map(({ endTime, startTime, text }, i) => (
-          <div key={i}>
-            {startTime} - {endTime} / {text}
-          </div>
-        ))}
+      <div className="flex p-2 gap-2">
+        <div className="flex-1 border border-black">
+          {caption.map(({ endTime, startTime, text }, i) => (
+            <div key={i}>
+              {startTime} - {endTime} / {text}
+            </div>
+          ))}
+        </div>
+        <TranslateRequest />
       </div>
-      <TranslateRequest />
     </>
   );
 }

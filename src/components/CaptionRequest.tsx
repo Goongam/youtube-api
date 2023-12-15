@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 import TranslateRequest from "./TranslateRequest";
 import { Caption, generateCaption } from "@/util/captions";
+import CaptionListView from "./CaptionListView";
 
 export default function CaptionRequest() {
   const searchParams = useSearchParams();
@@ -49,13 +50,7 @@ export default function CaptionRequest() {
     <>
       <button onClick={request}>자막요청</button>
       <div className="flex p-2 gap-2">
-        <div className="flex-1 border border-black">
-          {caption.map(({ endTime, startTime, text }, i) => (
-            <div key={i}>
-              {startTime} - {endTime} / {text}
-            </div>
-          ))}
-        </div>
+        <CaptionListView captions={caption} />
         <TranslateRequest />
       </div>
     </>

@@ -1,12 +1,15 @@
 import { TLANGS } from "@/constants/tlang";
+import { Caption, generateCaption } from "@/util/captions";
 import { useSearchParams } from "next/navigation";
 import { useState } from "react";
+import CaptionListView from "./CaptionListView";
+import TranslateButtons from "./TranslateButtons";
 
 export default function TranslateRequest() {
   const searchParams = useSearchParams();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  const [caption, setCaption] = useState("");
+  const [caption, setCaption] = useState<Caption[]>([]);
 
   const captionId = searchParams.get("caption");
 
@@ -20,7 +23,7 @@ export default function TranslateRequest() {
         else setError(true);
       })
       .then((data) => {
-        setCaption(data.caption);
+        setCaption(generateCaption(data.caption));
       })
       .catch(() => {
         setError(true);
@@ -35,23 +38,8 @@ export default function TranslateRequest() {
 
   return (
     <>
-      <div className="w-32 border border-black">
-        {TLANGS.map((tlang) => (
-          <div key={tlang}>
-            <button onClick={() => requestTranslate(tlang)}>
-              {tlang}으로 자막 번역
-            </button>
-          </div>
-        ))}
-      </div>
-      <div className="flex-1 border border-black">
-        {caption && (
-          <div>
-            <h2>-번역된 자막-</h2>
-            <div>{caption}</div>
-          </div>
-        )}
-      </div>
+      <TranslateButtons requestTranslate={requestTranslate} />
+      <CaptionListView captions={caption} modify />
     </>
   );
 }

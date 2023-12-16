@@ -33,13 +33,12 @@ export default function TranslateRequest() {
       });
   };
 
-  if (loading) return <>loading...</>;
   if (error) return <>error...</>;
 
   return (
     <>
       <TranslateButtons requestTranslate={requestTranslate} />
-      <CaptionListView captions={caption} modify />
+      <CaptionListView captions={caption} loading={loading} modify />
     </>
   );
 }

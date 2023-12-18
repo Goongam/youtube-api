@@ -6,7 +6,7 @@ interface Props {
 
 export default function TranslateButtons({ requestTranslate }: Props) {
   return (
-    <div className="flex flex-col w-32 shadow-md p-1 text-center">
+    <div className="flex flex-col shadow-md p-1 text-center">
       {TLANGS.map((tlang) => (
         <button
           key={tlang}

@@ -5,8 +5,6 @@ interface Props {
 }
 
 export default function Progress({ degree }: Props) {
-  console.log(degree);
-
   return (
     <>
       <div className="w-11/12 mx-auto my-4 relative">

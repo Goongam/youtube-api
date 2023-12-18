@@ -28,8 +28,6 @@ export async function GET(req: NextRequest, { params }: Params) {
       },
     });
 
-    console.log(res.data);
-
     return NextResponse.json({ caption: res.data }, { status: 200 });
   });
 }

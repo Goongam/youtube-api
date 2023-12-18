@@ -33,6 +33,7 @@ export default function TranslateRequest() {
       });
   };
 
+  // TODO: 에러처리
   if (error) return <>error...</>;
 
   return (

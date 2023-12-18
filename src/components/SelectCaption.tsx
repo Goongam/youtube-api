@@ -27,6 +27,7 @@ export default function SelectCaption() {
   };
 
   if (loading) return <>loading...</>;
+  // TODO: 에러처리
   if (!captionList?.caption) return <>로그인 후 이용해주세요</>;
   return (
     <>

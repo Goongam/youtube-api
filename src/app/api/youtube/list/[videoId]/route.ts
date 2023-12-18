@@ -29,8 +29,6 @@ interface Params {
 export async function GET(req: NextRequest, { params }: Params) {
   const access_token = req.cookies.get("access_token")?.value;
 
-  console.log(params.videoId);
-
   const videoId = params.videoId;
   const url = `https://youtube.googleapis.com/youtube/v3/captions?part=snippet&videoId=${videoId}`;
   const res: CaptionListData = await fetch(url, {

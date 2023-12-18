@@ -17,11 +17,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${inter.className} w-full`}>
         <header>
           <LoginBtn refresh={false} />
         </header>
-        {children}
+        <section className="flex flex-col items-center justify-center w-full">
+          {children}
+        </section>
       </body>
     </html>
   );

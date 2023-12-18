@@ -32,7 +32,7 @@ export default function SelectCaption() {
     <>
       {captionList?.caption.map((caption) => {
         return (
-          <div key={caption.id}>
+          <div key={caption.id} className="w-40 shadow-md text-center p-1">
             {caption.snippet.language}
             <button onClick={() => clickCaption(caption.id)}>선택</button>
           </div>

@@ -51,7 +51,7 @@ export default function CaptionRequest() {
   return (
     <>
       {/* <button onClick={request}>자막요청</button> */}
-      <div className="flex p-2 gap-2">
+      <div className="flex p-2 gap-2 w-full">
         <CaptionListView captions={caption} />
         <TranslateRequest />
       </div>

@@ -25,7 +25,7 @@ export default function ViewContainer() {
   const currentView = caption ? "caption" : video ? "list" : "none";
 
   return (
-    <section>
+    <section className="w-full flex flex-col items-center">
       <Progress degree={getDegree(currentView)} />
       {VIEW_MAPPING[currentView]}
     </section>

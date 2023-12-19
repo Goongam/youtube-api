@@ -22,15 +22,24 @@ export default function InputVideoURL() {
   };
 
   return (
-    <>
-      {error && <div>잘못된 url 입력...</div>}
-      <input
-        type="text"
-        placeholder="유튜브 영상 URL입력..."
-        value={videoURL}
-        onChange={(e) => setVideoURL(e.target.value)}
-      />
-      <button onClick={requestCaption}>자막요청하기</button>
-    </>
+    <section className="flex flex-col w-full gap-2 items-center">
+      {error && (
+        <div className="bg-red-400 w-full p-2 rounded-md text-white font-bold text-center">
+          잘못된 url을 입력하였습니다...
+        </div>
+      )}
+      <div className="flex w-full max-w-[700px] items-center p-1 bg-green-300">
+        <input
+          type="text"
+          placeholder="유튜브 영상 URL입력..."
+          value={videoURL}
+          onChange={(e) => setVideoURL(e.target.value)}
+          className="w-full h-10 border border-black rounded-sm"
+        />
+        <button onClick={requestCaption} className="w-20 rounded-md h-12">
+          확인
+        </button>
+      </div>
+    </section>
   );
 }

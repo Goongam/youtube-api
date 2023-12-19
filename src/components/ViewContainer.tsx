@@ -25,9 +25,14 @@ export default function ViewContainer() {
   const currentView = caption ? "caption" : video ? "list" : "none";
 
   return (
-    <section className="w-full flex flex-col items-center">
+    <section className="w-full flex flex-col items-center px-10 gap-4">
       <Progress degree={getDegree(currentView)} />
-      {VIEW_MAPPING[currentView]}
+      <div className="flex flex-col justify-start items-center w-full h-96 shadow-sm rounded-md border border-gray-500/30">
+        <h2 className="text-4xl font-extrabold my-10">
+          유튜브 자막 번역 및 업로드
+        </h2>
+        {VIEW_MAPPING[currentView]}
+      </div>
     </section>
   );
 }

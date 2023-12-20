@@ -5,7 +5,9 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function InputVideoURL() {
-  const [videoURL, setVideoURL] = useState("");
+  const [videoURL, setVideoURL] = useState(
+    "https://www.youtube.com/watch?v=j40_yYh9OvI"
+  );
   const [error, setError] = useState(false);
 
   const router = useRouter();

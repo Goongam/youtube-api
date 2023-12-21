@@ -6,7 +6,7 @@ import { useCallback, useEffect, useState } from "react";
 import TranslateRequest from "./TranslateRequest";
 import { Caption, generateCaption } from "@/util/captions";
 import CaptionListView from "./CaptionListView";
-import { useOriginCaption } from "@/app/hooks/useOriginCaption";
+import { useOriginCaption } from "@/hooks/useOriginCaption";
 
 export default function CaptionRequest() {
   const searchParams = useSearchParams();

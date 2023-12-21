@@ -7,9 +7,10 @@ export function useOriginCaption(captionId: string | null) {
   const [loading, setLoading] = useState(false);
 
   const request = useCallback(() => {
+    setLoading(true);
+    setError(false);
     if (!captionId) return setError(true);
 
-    setLoading(true);
     fetch(`/api/youtube/download/${captionId}`, {
       // credentials: "include",
     })

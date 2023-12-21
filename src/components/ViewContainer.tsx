@@ -27,7 +27,7 @@ export default function ViewContainer() {
   return (
     <section className="w-full flex flex-col items-center px-10 gap-4">
       <Progress degree={getDegree(currentView)} />
-      <main className="flex flex-col justify-start items-center w-full min-h-[24rem] shadow-sm rounded-md border border-gray-500/30">
+      <main className="flex flex-col justify-start items-center w-full p-1 min-h-[24rem] shadow-sm rounded-md border border-gray-500/30">
         <h2 className="text-4xl font-extrabold my-10">
           유튜브 자막 번역 및 업로드
         </h2>

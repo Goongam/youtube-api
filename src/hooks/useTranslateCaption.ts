@@ -1,3 +1,4 @@
+import { TLANGS_Type, TLANG_MAP } from "@/constants/tlang";
 import { Caption, generateCaption } from "@/util/captions";
 import { useState } from "react";
 

@@ -10,24 +10,5 @@ export default function TranslateRequest() {
   const searchParams = useSearchParams();
   const captionId = searchParams.get("caption");
 
-  const {
-    requestTranslate,
-    translateCaption,
-    translateError,
-    translateLoading,
-  } = useTranslateCaption(captionId);
-
-  // TODO: 에러처리
-  if (translateError) return <>error...</>;
-
-  return (
-    <>
-      <TranslateButtons requestTranslate={requestTranslate} />
-      <CaptionListView
-        captions={translateCaption}
-        loading={translateLoading}
-        modify
-      />
-    </>
-  );
+  return <></>;
 }

@@ -21,9 +21,8 @@ export default function CaptionRequest() {
     translateCaption,
     translateError,
     translateLoading,
+    language,
   } = useTranslateCaption(captionId);
-
-  // TODO: 에러처리
 
   if (originLoading) return <>loading...</>;
 
@@ -58,9 +57,12 @@ export default function CaptionRequest() {
           modify
         />
       </div>
-      <button className="w-full rounded-md p-1 text-white font-bold bg-green-400">
-        업로드
-      </button>
+      {/* TODO: 유효성 검증 필요 */}
+      {!!translateCaption?.length && (
+        <button className="w-full rounded-md p-1 text-white font-bold bg-green-400">
+          {language}로 업로드
+        </button>
+      )}
     </>
   );
 }

@@ -7,14 +7,18 @@ import TranslateRequest from "./TranslateRequest";
 import { Caption, generateCaption } from "@/util/captions";
 import CaptionListView from "./CaptionListView";
 import { useOriginCaption } from "@/hooks/useOriginCaption";
+import { useSession } from "@/hooks/useSession";
 
 export default function CaptionRequest() {
   const searchParams = useSearchParams();
   const captionId = searchParams.get("caption");
 
+  const { session } = useSession();
+
   const { originCaption, originError, originLoading, originRequest } =
     useOriginCaption(captionId);
 
+  if (!session) return <>로그인 후 이용해주세요</>;
   if (originLoading) return <>loading...</>;
   if (originError)
     return (

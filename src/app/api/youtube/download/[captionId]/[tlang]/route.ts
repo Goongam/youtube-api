@@ -1,4 +1,4 @@
-import { TLANGS } from "@/constants/tlang";
+import { TLANGS, TLANGS_Type } from "@/constants/tlang";
 import { withSession } from "@/util/withSession";
 import axios from "axios";
 import { NextRequest, NextResponse } from "next/server";
@@ -10,7 +10,7 @@ interface CaptionData {
 interface Params {
   params: {
     captionId: string;
-    tlang: string;
+    tlang: TLANGS_Type;
   };
 }
 

@@ -18,7 +18,7 @@ export default function InputVideoURL() {
     if (!id) {
       console.log("에러");
       setError(true);
-      return; //TODO: 에러처리
+      return;
     }
     router.push(`?video=${id}`);
   };

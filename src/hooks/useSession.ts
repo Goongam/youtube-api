@@ -1,11 +1,10 @@
 import { useCallback, useEffect, useState } from "react";
 
 export function useSession() {
-  const [session, setSession] = useState(false);
+  const [session, setSession] = useState(true);
 
   const callSession = useCallback(async () => {
     const response = await fetch("/api/session");
-    console.log(response.ok);
 
     if (response.ok) setSession(true);
     else setSession(false);
